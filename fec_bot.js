@@ -14,7 +14,9 @@ const fecLoop = async (pagination=null) => {
 
     let lastIndex = pagination ? '&last_index=' +  pagination.last_index : '';
 
-    await fetch(`https://api.open.fec.gov/v1/schedules/schedule_a/?per_page=20&two_year_transaction_period=2020&sort_hide_null=false&sort=-contribution_receipt_date&api_key=8PTHEXV4lgB9cK64b5VJeImc14wwA8Ubc7ayTLfo&sort_null_only=true${lastIndex}`)
+    await setTimeout(()=> {
+
+         fetch(`https://api.open.fec.gov/v1/schedules/schedule_a/?per_page=20&two_year_transaction_period=2020&sort_hide_null=false&sort=-contribution_receipt_date&api_key=8PTHEXV4lgB9cK64b5VJeImc14wwA8Ubc7ayTLfo&sort_null_only=true${lastIndex}`)
         .then((res) => {
             return res.json();
         })
@@ -42,7 +44,9 @@ const fecLoop = async (pagination=null) => {
                 return console.log('All records returned');
             }
         })
-        .catch(err=>{console.log(err)});  
+        .catch(err=>{console.log(err)});
+
+    }, 1000)
     
 } 
 
